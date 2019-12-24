@@ -20,12 +20,12 @@ $http->on("start", function ($server) {
 
 $http->on("request", function ($request, $response) use ($table) {
 
-    echo var_export($request,true)."\n\n";
+    echo "\n\nnew request\n\n";
+    // echo var_export($request,true)."\n\n";
     
-    echo "new request \n\n";
     $username = $userId = $welcome = $view = "";
     if ($request->server['request_method'] == 'POST') {
-        echo var_export($request->post, true);
+        // echo var_export($request->post, true);
         if ($user = getUser($request->post['username'], $request->post['password'])) {
             $userId = $user['id'] . ":" . rand(1000000, 9999999);
             $table[$userId] = [
@@ -55,7 +55,7 @@ $http->on("request", function ($request, $response) use ($table) {
         }
     }
 
-    echo "\n\n tabel ith userId :{$userId} " . var_export($table[$userId], true) . "\n\n";
+    // echo "\n\n tabel ith userId :{$userId} " . var_export($table[$userId], true) . "\n\n";
 
     switch ($request->server['request_uri']) {
         case '/logout':

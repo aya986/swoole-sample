@@ -1,4 +1,5 @@
 <?php
+Swoole\Runtime::enableCoroutine();
 
 require 'config.php';
 $chan  = new Chan(1);
